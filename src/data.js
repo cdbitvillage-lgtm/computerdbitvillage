@@ -1,0 +1,277 @@
+export const courses = [
+  {
+    id: "office",
+    title: "Computer Office Application",
+    bn: "কম্পিউটার অফিস অ্যাপ্লিকেশন",
+    tag: "সবার জন্য",
+    icon: "Monitor",
+    color: "#e7f3ff",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=650&q=80",
+    description:
+      "দৈনন্দিন কাজ থেকে প্রফেশনাল অফিস ম্যানেজমেন্ট — কম্পিউটারের ব্যবহার শিখুন হাতে-কলমে।",
+    syllabus: [
+      "Computer fundamentals & typing",
+      "Microsoft Word & document formatting",
+      "Microsoft Excel & spreadsheets",
+      "PowerPoint presentations",
+      "Internet, email & online safety",
+    ],
+  },
+  {
+    id: "graphics",
+    title: "Graphics Design",
+    bn: "গ্রাফিক্স ডিজাইন",
+    tag: "ক্রিয়েটিভ স্কিল",
+    icon: "PenTool",
+    color: "#fff0e5",
+    image:
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=650&q=80",
+    description:
+      "ডিজাইনের মৌলিক ধারণা থেকে ব্র্যান্ডের জন্য ভিজ্যুয়াল তৈরির প্র্যাকটিক্যাল প্রশিক্ষণ।",
+    syllabus: [
+      "Design principles & typography",
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Brand identity & print design",
+      "Portfolio development",
+    ],
+  },
+  {
+    id: "hardware",
+    title: "Hardware & Networking",
+    bn: "হার্ডওয়্যার ও নেটওয়ার্কিং",
+    tag: "টেকনিক্যাল স্কিল",
+    icon: "Cpu",
+    color: "#e8f6f1",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=650&q=80",
+    description: "কম্পিউটার হার্ডওয়্যার, ট্রাবলশুটিং এবং নেটওয়ার্ক সেটআপের কাজ শিখুন।",
+    syllabus: [
+      "Computer components",
+      "PC assembly & diagnosis",
+      "Operating systems",
+      "LAN & Wi-Fi configuration",
+      "Network troubleshooting",
+    ],
+  },
+  {
+    id: "freelancing",
+    title: "Freelancing",
+    bn: "ফ্রিল্যান্সিং",
+    tag: "ক্যারিয়ার স্কিল",
+    icon: "Globe",
+    color: "#eaf0ff",
+    image:
+      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=650&q=80",
+    description:
+      "দক্ষতা, পোর্টফোলিও ও ক্লায়েন্ট কমিউনিকেশনের মাধ্যমে অনলাইন কাজের প্রস্তুতি নিন।",
+    syllabus: [
+      "Choosing your skill",
+      "Portfolio building",
+      "Marketplace profiles",
+      "Client communication",
+      "Proposals & project delivery",
+    ],
+  },
+  {
+    id: "motherboard",
+    title: "Laptop Motherboard Repairing",
+    bn: "ল্যাপটপ মাদারবোর্ড রিপেয়ারিং",
+    tag: "অ্যাডভান্সড স্কিল",
+    icon: "Wrench",
+    color: "#fff0e5",
+    image:
+      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=650&q=80",
+    description: "ডায়াগনসিস ও নিরাপদ রিপেয়ারিং পদ্ধতি শিখুন।",
+    syllabus: [
+      "Electronics fundamentals",
+      "Circuit diagrams",
+      "Tools & soldering safety",
+      "Power circuit diagnosis",
+      "Practical fault finding",
+    ],
+  },
+  {
+    id: "marketing",
+    title: "Digital Marketing",
+    bn: "ডিজিটাল মার্কেটিং",
+    tag: "বিজনেস স্কিল",
+    icon: "TrendingUp",
+    color: "#e8f6f1",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=650&q=80",
+    description: "সোশ্যাল মিডিয়া, কনটেন্ট এবং অনলাইন মার্কেটিংয়ের ভিত্তি তৈরি করুন।",
+    syllabus: [
+      "Marketing fundamentals",
+      "Social media management",
+      "Content planning",
+      "SEO basics",
+      "Campaign measurement",
+    ],
+  },
+];
+export const categories = [
+  "All",
+  "Laptop",
+  "Desktop Computer",
+  "Computer Components",
+  "Monitor",
+  "Printer",
+  "CCTV Camera",
+  "Router",
+  "Keyboard & Mouse",
+  "SSD & HDD",
+  "RAM",
+  "Accessories",
+];
+export const services = [
+  "Laptop Servicing",
+  "Desktop Servicing",
+  "Laptop Motherboard Repair",
+  "Windows Installation",
+  "Software Installation",
+  "Printer Servicing",
+  "CCTV Installation",
+  "CCTV Maintenance",
+  "Networking Setup",
+  "Data Recovery Enquiry",
+];
+export const samples = [
+  {
+    id: "sample-laptop",
+    title: "Everyday performance laptop",
+    category: "Laptop",
+    brand: "Sample product",
+    image:
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=650&q=80",
+    sample: true,
+  },
+  {
+    id: "sample-desktop",
+    title: "Desktop workstation",
+    category: "Desktop Computer",
+    brand: "Sample product",
+    image:
+      "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=650&q=80",
+    sample: true,
+  },
+  {
+    id: "sample-monitor",
+    title: "Full HD productivity monitor",
+    category: "Monitor",
+    brand: "Sample product",
+    image:
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=650&q=80",
+    sample: true,
+  },
+];
+export const modules = [
+  "dashboard",
+  "courses",
+  "batches",
+  "admissions",
+  "students",
+  "attendance",
+  "examinations",
+  "subjects",
+  "results",
+  "certificates",
+  "products",
+  "orders",
+  "service_requests",
+  "notices",
+  "gallery",
+  "settings",
+];
+export const templates = {
+  courses: {
+    data: {
+      title: "",
+      bn: "",
+      description: "",
+      image: "",
+      syllabus: [],
+      duration: "",
+      fee: "",
+      requirements: "",
+      schedule: "",
+      certificate: "",
+    },
+    published: false,
+  },
+  batches: {
+    courseId: "",
+    data: { title: "", startDate: "", schedule: "", seats: 20 },
+    published: false,
+  },
+  students: {
+    courseId: "",
+    batchId: "",
+    userId: null,
+    data: {
+      name: "",
+      photo: "",
+      phone: "",
+      admissionDate: "",
+      startDate: "",
+      endDate: "",
+    },
+    status: "Active",
+  },
+  attendance: {
+    studentId: "",
+    date: new Date().toISOString().slice(0, 10),
+    status: "Present",
+    data: {},
+  },
+  examinations: { courseId: "", batchId: "", data: { title: "", date: "" } },
+  subjects: { examinationId: "", data: { title: "", total: 100, pass: 40 } },
+  results: {
+    studentId: "",
+    examinationId: "",
+    published: false,
+    data: { marks: [{ subject: "Theory", obtained: 0, total: 100, pass: 40 }] },
+  },
+  certificates: {
+    studentId: "",
+    status: "Verified",
+    published: false,
+    data: { completionDate: "" },
+  },
+  products: {
+    price: null,
+    stock: 0,
+    published: false,
+    data: {
+      title: "",
+      description: "",
+      brand: "",
+      category: "Laptop",
+      image: "",
+      sample: false,
+      discountPrice: null,
+    },
+  },
+  notices: {
+    published: false,
+    data: {
+      title: "",
+      description: "",
+      category: "General Announcements",
+      date: new Date().toISOString().slice(0, 10),
+    },
+  },
+  gallery: {
+    published: false,
+    data: { title: "", image: "", category: "Classroom" },
+  },
+  settings: {
+    data: {
+      siteName: "Computer DB-IT Village",
+      siteDescription: "কম্পিউটার প্রশিক্ষণ, বিক্রয় ও সার্ভিসিং",
+      address: "Sabiya Mansion, 1st Floor, Freeport, CEPZ, Chattogram",
+      phone: "01309039718",
+    },
+  },
+};

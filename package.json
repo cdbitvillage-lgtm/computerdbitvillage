@@ -1,0 +1,31 @@
+{
+  "name": "computer-dbit-village",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.0.0",
+    "lucide-react": "^0.468.0",
+    "@netlify/database": "latest",
+    "@netlify/blobs": "latest",
+    "@netlify/identity": "latest",
+    "drizzle-orm": "beta",
+    "hono": "^4.0.0",
+    "zod": "^3.24.0",
+    "jspdf": "^3.0.0",
+    "html2canvas": "^1.4.1"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "drizzle-kit": "beta",
+    "typescript": "^5.7.0"
+  }
+}
