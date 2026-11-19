@@ -7,6 +7,7 @@ import {
   Link,
   useLocation,
   useParams,
+  useNavigate,
 } from "react-router-dom";
 import * as Icons from "lucide-react";
 import {
@@ -46,6 +47,9 @@ const nav = [
   ["/app/contact", "যোগাযোগ", "Contact"],
 ];
 function App() {
+  const [passwordRecovery, setPasswordRecovery] = useState(() =>
+    /(?:^|&)recovery_token=/.test(window.location.hash.slice(1)),
+  );
   const [en, setEn] = useState(false),
     [menu, setMenu] = useState(false),
     [cart, setCart] = useState([]);
@@ -58,6 +62,8 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = en ? "en" : "bn";
   }, [en]);
+  if (passwordRecovery)
+    return <PasswordRecovery onComplete={() => setPasswordRecovery(false)} />;
   useEffect(() => {
     api("/site")
       .then((s) => {
@@ -2113,6 +2119,93 @@ function Footer() {
         <span>{t("দক্ষতা · প্রযুক্তি · আস্থা", "Skills · Technology · Trust")}</span>
       </div>
     </footer>
+  );
+}
+function PasswordRecovery({ onComplete }) {
+  const navigate = useNavigate();
+  const [ready, setReady] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        // Netlify Identity extracts and verifies the one-time recovery token.
+        const callback = await handleAuthCallback();
+        if (callback?.type !== "recovery")
+          throw new Error("This password recovery link is invalid or has expired. Request a new link.");
+        if (active) setReady(true);
+      } catch (e) {
+        if (active) setError(e.message || "Unable to verify this recovery link. Request a new one.");
+      } finally {
+        // Remove the one-time fragment after the Identity SDK has processed it.
+        window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      }
+    })();
+    return () => { active = false; };
+  }, []);
+
+  async function submit(e) {
+    e.preventDefault();
+    setError("");
+    setMessage("");
+    if (newPassword.length < 10) {
+      setError("Password must be at least 10 characters long.");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setError("The passwords do not match.");
+      return;
+    }
+    setBusy(true);
+    try {
+      await updateUser({ password: newPassword });
+      setNewPassword("");
+      setConfirmPassword("");
+      await logout();
+      setMessage("Your password has been updated. Redirecting to Admin Login…");
+      window.setTimeout(() => {
+        onComplete();
+        navigate("/app/admin", { replace: true });
+      }, 1200);
+    } catch (e) {
+      setError(e.message || "Password update failed. Request a new recovery link and try again.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <main className="section">
+      <div className="container">
+        <div className="narrow panel login-panel">
+          <span className="empty-icon"><Icon name="LockKeyhole" size={31} /></span>
+          <h2>Reset your password</h2>
+          <p>Choose a new password for your Computer DB-IT Village account.</p>
+          {ready ? (
+            <form onSubmit={submit}>
+              <Field label="New Password" name="newPassword" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} minLength={10} autoComplete="new-password" />
+              <Field label="Confirm Password" name="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength={10} autoComplete="new-password" />
+              <p className="muted">Use at least 10 characters. Both fields must match.</p>
+              <Alert error={error} message={message} />
+              <button className="btn full" disabled={busy || !newPassword || !confirmPassword}>
+                {busy ? "Updating password…" : "Update Password"}
+                <Icon name="ArrowRight" size={18} />
+              </button>
+            </form>
+          ) : (
+            <>
+              <Alert error={error} message={message || (!error ? "Verifying your recovery link…" : "")} />
+              {error && <Link className="btn full" to="/app/admin">Go to Admin Login</Link>}
+            </>
+          )}
+        </div>
+      </div>
+    </main>
   );
 }
 function LoginPanel({ onLogin, title = "Secure sign in" }) {
