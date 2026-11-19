@@ -62,8 +62,6 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = en ? "en" : "bn";
   }, [en]);
-  if (passwordRecovery)
-    return <PasswordRecovery onComplete={() => setPasswordRecovery(false)} />;
   useEffect(() => {
     api("/site")
       .then((s) => {
@@ -80,6 +78,8 @@ function App() {
       })
       .catch(() => {});
   }, []);
+  if (passwordRecovery)
+    return <PasswordRecovery onComplete={() => setPasswordRecovery(false)} />;
   return (
     <Context.Provider value={{ en, t, cart, setCart }}>
       <div className="topbar">
